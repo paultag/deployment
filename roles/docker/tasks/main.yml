@@ -1,0 +1,9 @@
+---
+- name: Install Docker
+  apt: name=docker.io update_cache=yes state=present
+
+- name: Starting Docker
+  service: name=docker.io state=started
+
+- name: Add in a Docker config directory.
+  file: path=/etc/docker/ state=directory
