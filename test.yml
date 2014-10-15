@@ -7,6 +7,4 @@
       name: "postgres"
       image: "paultag/postgres"
       command: "/usr/local/bin/paultag-psqld"
-      volumes: {
-          "/srv/lucifer.pault.ag/prod/postgres/9.3/main": "/var/lib/postgresql/9.3/main"
-      }
+      volumes: {"9.3/main": "/var/lib/postgresql/9.3/main"}

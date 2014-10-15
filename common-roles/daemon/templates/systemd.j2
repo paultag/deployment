@@ -16,7 +16,7 @@ ExecStart=/bin/bash -c '/usr/bin/docker start -a {{name}} || \
         -e {{key}}={{value}} \
 {% endfor %}
 {% for host, container in volumes.iteritems() %}
-        -v {{host}}:{{container}} \
+        -v /srv/docker/{{name}}/{{host}}:{{container}} \
 {% endfor %}
         {{image}} {{command}}'
 ExecStop=/usr/bin/docker stop -t 5 {{name}}
