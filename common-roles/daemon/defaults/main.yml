@@ -1,0 +1,8 @@
+---
+name: null
+image: "debian:stable"
+privileged: false
+env: {}
+volumes: {}
+command: ""
+environment_file: false

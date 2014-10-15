@@ -1,0 +1,3 @@
+---
+ - name: Write out systemd unit file
+   template: src=systemd.j2 dest=/etc/systemd/system/{{name}}.service owner=root group=root mode=0644

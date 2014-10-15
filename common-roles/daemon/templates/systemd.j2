@@ -1,0 +1,28 @@
+[Unit]
+Description={{name}}
+Author=Paul R. Tagliamonte <tag@pault.ag>
+Requires=docker.io.service
+After=docker.io.service
+
+[Service]
+Restart=always
+ExecStart=/bin/bash -c '/usr/bin/docker start -a {{name}} || \
+    /usr/bin/docker run \
+{% if privileged %}
+        --privileged=true \
+{% endif %}
+        --name {{name}} \
+{% for key, value in env.iteritems() %}
+        -e {{key}}={{value}} \
+{% endfor %}
+{% for host, container in volumes.iteritems() %}
+        -v {{host}}:{{container}} \
+{% endfor %}
+        {{image}} {{command}}'
+ExecStop=/usr/bin/docker stop -t 5 {{name}}
+{% if environment_file %}
+EnvironmentFile=/etc/docker/{{environment_file}}.sh
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target
