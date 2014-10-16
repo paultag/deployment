@@ -5,6 +5,12 @@
   roles:
     - role: common-roles/daemon
       name: "nginx"
+      dirs: ["sites-enabled/",
+             "serve/logs/",
+             "serve/sockets/",
+             "serve/sites/catchall/",]
+      files: ["sites-enabled/default",
+              "serve/sites/catchall/index.html"]
       image: "paultag/nginx:latest"
       ports: ["0.0.0.0:80:80/tcp"]
       volumes: {"serve/": "/serve/",

@@ -6,6 +6,10 @@
  - name: 'Add in a {{name}} config directory.'
    file: path=/srv/docker/{{name}}/ state=directory
 
+ - name: Set up nginx directories
+   file: path=/srv/docker/nginx/{{item}}/ state=directory
+   with_items: '{{dirs}}'
+
  - name: Copy in files
    copy: src={{name}}/files/{{item}} dest=/srv/docker/{{name}}/{{item}} owner=root group=root mode=0644
    with_items: '{{files}}'
