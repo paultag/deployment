@@ -2,6 +2,7 @@
 name: null
 image: "debian:stable"
 privileged: false
+ports: []
 env: {}
 volumes: {}
 command: ""

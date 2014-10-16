@@ -3,10 +3,8 @@
   hosts: lucifer
   sudo: true
   roles:
-    - role: common-roles/docker
     - role: common-roles/daemon
       files: ["rawdns.json"]
-      # config: {"rawdns.json": "rawdns.json"}
       name: "rawdns"
       image: "tianon/rawdns:latest"
       ports: ["172.17.42.1:53:53/udp"]
