@@ -1,8 +1,8 @@
 [Unit]
 Description={{name}}
 Author=Paul R. Tagliamonte <tag@pault.ag>
-Requires=docker.io.service
-After=docker.io.service
+Requires=docker.service
+After=docker.service
 
 [Service]
 Restart=always
@@ -12,11 +12,18 @@ ExecStart=/bin/bash -c '/usr/bin/docker start -a {{name}} || \
         --privileged=true \
 {% endif %}
         --name {{name}} \
+{% for port in ports %}
+        -p {{port}} \
+{% endfor %}
 {% for key, value in env.iteritems() %}
         -e {{key}}={{value}} \
 {% endfor %}
 {% for host, container in volumes.iteritems() %}
+    {% if host.startswith("/") %}
+        -v {{host}}:{{container}} \
+    {% else %}
         -v /srv/docker/{{name}}/{{host}}:{{container}} \
+    {% endif %}
 {% endfor %}
         {{image}} {{command}}'
 ExecStop=/usr/bin/docker stop -t 5 {{name}}

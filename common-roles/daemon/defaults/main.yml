@@ -6,3 +6,4 @@ env: {}
 volumes: {}
 command: ""
 environment_file: false
+files: []

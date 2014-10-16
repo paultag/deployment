@@ -1,3 +1,20 @@
 ---
  - name: Write out systemd unit file
    template: src=systemd.j2 dest=/etc/systemd/system/{{name}}.service owner=root group=root mode=0644
+
+ - name: 'Add in a {{name}} config directory.'
+   file: path=/srv/docker/{{name}}/ state=directory
+
+ - name: Copy in files
+   copy: src={{name}}/files/{{item}} dest=/srv/docker/{{name}}/{{item}} owner=root group=root mode=0644
+   with_items: '{{files}}'
+
+ - name: Ensure docker-py is present on the host
+   apt: name=python-docker update_cache=yes state=present
+
+ - name: Update image
+   dockimg: image={{image}} pulled=true state=present
+   notify: restart {{name}}
+
+ - name: Ensure running
+   service: name={{name}} state=started
