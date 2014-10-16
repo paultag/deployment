@@ -6,5 +6,6 @@
     - role: common-roles/daemon
       name: "znc"
       image: "paultag/znc:latest"  # Replace with Jess'
+      command: "znc"
       ports: ["0.0.0.0:6697:6697/tcp"]
       volumes: {"znc": "/znc/.znc/"}
