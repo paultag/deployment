@@ -1,0 +1,10 @@
+---
+- name: Install znc
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: common-roles/daemon
+      name: "znc"
+      image: "paultag/znc:latest"  # Replace with Jess'
+      ports: ["0.0.0.0:6697:6697/tcp"]
+      volumes: {"znc": "/znc/.znc/"}
