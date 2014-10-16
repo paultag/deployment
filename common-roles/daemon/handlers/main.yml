@@ -1,3 +1,6 @@
 ---
  - name: restart {{name}}
    service: name={{name}} state=restarted
+
+ - name: reload specs
+   command: systemctl daemon-reload
