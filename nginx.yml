@@ -1,0 +1,11 @@
+---
+- name: Install nginx
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: common-roles/daemon
+      name: "nginx"
+      image: "paultag/nginx:latest"
+      ports: ["0.0.0.0:80:80/tcp"]
+      volumes: {"serve/": "/serve/",
+                "sites-enabled/": "/etc/nginx/sites-enabled/"}
