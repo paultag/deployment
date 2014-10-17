@@ -1,5 +1,5 @@
 ---
- - name: Install znc
+ - name: Install all the webserver cruft
    hosts: lucifer
    sudo: true
    roles:
