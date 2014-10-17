@@ -1,0 +1,17 @@
+---
+ - name: Install znc
+   hosts: lucifer
+   sudo: true
+   roles:
+     - role: website
+       name: catchall
+       default: true
+       repo: "git://github.com/paultag/catchall.pault.ag.git"
+       vhosts: 
+         - "_"
+     - role: website
+       name: lolkml
+       default: false
+       repo: "git://github.com/paultag/lolkml.org.git"
+       vhosts: 
+         - "lolkml.org"
