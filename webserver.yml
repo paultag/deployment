@@ -15,3 +15,10 @@
        repo: "git://github.com/paultag/lolkml.org.git"
        vhosts: 
          - "lolkml.org"
+     - role: website
+       name: acetarium
+       default: false
+       repo: "git://github.com/paultag/acetarium.com.git"
+       vhosts:
+         - "acetarium.com"
+         - "www.acetarium.com"
