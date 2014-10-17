@@ -8,11 +8,12 @@
 
  - name: Set up nginx directories
    file: path=/srv/docker/nginx/{{item}}/ state=directory
-   with_items: '{{dirs}}'
+   with_items: dirs
 
  - name: Copy in files
    copy: src={{name}}/files/{{item}} dest=/srv/docker/{{name}}/{{item}} owner=root group=root mode=0644
-   with_items: '{{files}}'
+   with_items: files
+   notify: restart {{name}}
 
  - name: Ensure docker-py is present on the host
    apt: name=python-docker update_cache=yes state=present

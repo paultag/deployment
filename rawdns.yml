@@ -3,7 +3,7 @@
   hosts: lucifer
   sudo: true
   roles:
-    - role: common-roles/daemon
+    - role: daemon
       files: ["rawdns.json"]
       name: "rawdns"
       image: "tianon/rawdns:latest"

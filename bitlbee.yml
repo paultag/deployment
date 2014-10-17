@@ -1,0 +1,14 @@
+---
+- name: Install bitlbee
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: daemon
+      name: "bitlbee"
+      image: "paultag/bitlbee:latest"
+      command: "bitlbee -D -n -i 0.0.0.0 -p 6667 -v -u bitlbee"
+      terminal: true
+      dirs: ["etc", "lib"]
+      files: ["etc/bitlbee.conf", "etc/motd.txt"]
+      volumes: {"etc/": "/etc/bitlbee/",
+                "lib/": "/var/lib/bitlbee/"}

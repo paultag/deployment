@@ -1,10 +1,12 @@
 ---
 name: null
 image: "debian:stable"
-privileged: false
 ports: []
 env: {}
 volumes: {}
 command: ""
-environment_file: false
 files: []
+dirs: []
+privileged: false
+terminal: false
+environment_file: false

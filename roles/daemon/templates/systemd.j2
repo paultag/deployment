@@ -11,6 +11,9 @@ ExecStart=/bin/bash -c '/usr/bin/docker start -a {{name}} || \
 {% if privileged %}
         --privileged=true \
 {% endif %}
+{% if terminal %}
+        -it \
+{% endif %}
         --name {{name}} \
 {% for port in ports %}
         -p {{port}} \
@@ -19,11 +22,11 @@ ExecStart=/bin/bash -c '/usr/bin/docker start -a {{name}} || \
         -e {{key}}={{value}} \
 {% endfor %}
 {% for host, container in volumes.iteritems() %}
-    {% if host.startswith("/") %}
+{% if host.startswith("/") %}
         -v {{host}}:{{container}} \
-    {% else %}
+{% else %}
         -v /srv/docker/{{name}}/{{host}}:{{container}} \
-    {% endif %}
+{% endif %}
 {% endfor %}
         {{image}} {{command}}'
 ExecStop=/usr/bin/docker stop -t 5 {{name}}
