@@ -1,0 +1,13 @@
+---
+- name: Install OpenVPN
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: daemon
+      name: "openvpn"
+      privileged: true
+      image: "paultag/openvpn:latest"
+      command: "/usr/bin/paultag-openvpnd"
+      ports: ["0.0.0.0:1194:1194/udp",
+              "0.0.0.0:443:443/tcp"]
+      volumes: {"openvpn": "/etc/openvpn/"}
