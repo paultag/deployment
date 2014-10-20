@@ -7,7 +7,7 @@
    file: path=/srv/docker/{{name}}/ state=directory
 
  - name: Set up nginx directories
-   file: path=/srv/docker/nginx/{{item}}/ state=directory
+   file: path=/srv/docker/{{name}}/{{item}}/ state=directory
    with_items: dirs
 
  - name: Copy in files
