@@ -6,7 +6,7 @@
  - name: 'Add in a {{name}} config directory.'
    file: path=/srv/docker/{{name}}/ state=directory
 
- - name: Set up nginx directories
+ - name: Set up {{name}} directories
    file: path=/srv/docker/{{name}}/{{item}}/ state=directory
    with_items: dirs
 
@@ -20,7 +20,10 @@
 
  - name: Update image
    dockimg: image={{image}} pulled=true state=present
-   notify: restart {{name}}
+   notify: 
+       - stop {{name}}
+       - remove {{name}}
+       - start {{name}}
 
  - name: Ensure running
    service: name={{name}} state=started

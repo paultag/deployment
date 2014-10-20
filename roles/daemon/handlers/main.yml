@@ -2,5 +2,14 @@
  - name: restart {{name}}
    service: name={{name}} state=restarted
 
+ - name: start {{name}}
+   service: name={{name}} state=started
+
+ - name: stop {{name}}
+   service: name={{name}} state=stopped
+
+ - name: remove {{name}}
+   docker: name={{name}} image={{image}} state=absent
+
  - name: reload specs
    command: systemctl daemon-reload
