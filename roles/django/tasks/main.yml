@@ -1,0 +1,4 @@
+---
+ - name: Write out nginx server config
+   template: src=nginx.j2 dest=/srv/docker/nginx/sites-enabled/{{name}} owner=root group=root mode=0644
+   notify: restart nginx
