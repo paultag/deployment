@@ -28,7 +28,7 @@ ExecStart=/bin/bash -c '/usr/bin/docker start -a {{name}} || \
         -v /srv/docker/{{name}}/{{host}}:{{container}} \
 {% endif %}
 {% endfor %}
-        {{image}} {{command}}'
+        {{image}}{% if command %} {{command}}{% endif %}'
 ExecStop=/usr/bin/docker stop -t 5 {{name}}
 {% if environment_file %}
 EnvironmentFile=/etc/docker/{{environment_file}}.sh
