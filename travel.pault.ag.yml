@@ -15,8 +15,10 @@
       environment_file: "travel.pault.ag"
       env: {
         "SECRET_KEY": "${SECRET_KEY}",
+        "DJANGO_DEBUG": "${DJANGO_DEBUG}",
         "DJANGO_DATABASE_URL": "${DJANGO_DATABASE_URL}",
       }
       volumes: {
           "/srv/docker/nginx/serve/sockets/": "/sockets/"
+          "static": "/static/"
       }
