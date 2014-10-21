@@ -20,5 +20,4 @@
       }
       volumes: {
           "/srv/docker/nginx/serve/sockets/": "/sockets/"
-          "static": "/static/"
       }
