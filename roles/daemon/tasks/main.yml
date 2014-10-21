@@ -23,7 +23,7 @@
    notify: 
        - stop {{name}}
        - remove {{name}}
-       - restart {{name}}
+       - start {{name}}
 
  - name: Ensure running
    service: name={{name}} state=started

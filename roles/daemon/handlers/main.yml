@@ -5,6 +5,9 @@
  - name: stop {{name}}
    service: name={{name}} state=stopped
 
+ - name: start {{name}}
+   service: name={{name}} state=restarted
+
  - name: remove {{name}}
    docker: name={{name}} image={{image}} state=absent
 
