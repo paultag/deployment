@@ -6,6 +6,7 @@
     - role: django
       name: "travel.pault.ag"
       default: false
+      upgrade: true
       vhosts:
         - "travel.pault.ag"
         - "www.travel.pault.ag"

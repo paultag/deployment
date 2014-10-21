@@ -11,5 +11,9 @@
  - name: remove {{name}}
    docker: name={{name}} image={{image}} state=absent
 
+ - name: upgrade {{name}}
+   script: "{{name}}/files/upgrade.sh"
+   when: upgrade == True
+
  - name: reload specs
    command: systemctl daemon-reload

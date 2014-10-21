@@ -23,6 +23,7 @@
    notify: 
        - stop {{name}}
        - remove {{name}}
+       - upgrade {{name}}
        - start {{name}}
 
  - name: Ensure running
