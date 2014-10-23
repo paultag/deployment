@@ -1,0 +1,35 @@
+---
+- name: Install moxie
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: webservice
+      name: "moxie"
+      default: false
+      upgrade: true
+      vhosts:
+        - "moxie.pault.ag"
+        - "moxie.lucifer.pault.ag"
+    - role: daemon
+      name: "moxie"
+      image: "paultag/moxie:latest"
+      privileged: true
+      environment_file: "moxie"
+      command: "moxie-serve"
+      env: {
+        "DATABASE_URL": "${DATABASE_URL}",
+        "MOXIE_SOCKET": "${MOXIE_SOCKET}"
+      }
+      volumes: {
+          "/run/docker.sock": "/run/docker.sock",
+          "moxie": "/moxie/",
+          "/srv/docker/nginx/serve/sockets/": "/sockets/"
+      }
+    - role: daemon
+      name: "moxied"
+      image: "paultag/moxie:latest"
+      privileged: true
+      environment_file: "moxie"
+      command: "moxied"
+      env: {"DATABASE_URL": "${DATABASE_URL}"}
+      volumes: {"/run/docker.sock": "/run/docker.sock"}

@@ -1,0 +1,15 @@
+server {
+    listen 80{% if default %} default_server{% endif %};
+    listen [::]:80{% if default %} default_server{% endif %};
+{% for host in vhosts %}
+    server_name {{host}};
+{% endfor %}
+
+    access_log /serve/logs/{{name}}.access.log;
+    error_log  /serve/logs/{{name}}.error.log;
+
+    location / {
+        include uwsgi_params;
+        proxy_pass http://unix:/serve/sockets/{{name}}.sock;
+    }
+}
