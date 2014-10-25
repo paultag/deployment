@@ -6,7 +6,6 @@
     - role: django
       name: "travel.pault.ag"
       default: false
-      upgrade: true
       vhosts:
         - "travel.pault.ag"
         - "www.travel.pault.ag"
@@ -14,6 +13,7 @@
       name: "travel.pault.ag"
       image: "paultag/travel.pault.ag:latest"
       environment_file: "travel.pault.ag"
+      upgrade: true
       env: {
         "SECRET_KEY": "${SECRET_KEY}",
         "DJANGO_DEBUG": "${DJANGO_DEBUG}",

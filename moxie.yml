@@ -26,6 +26,7 @@
           "/srv/docker/nginx/serve/sockets/": "/sockets/"
       }
     - role: daemon
+      upgrade: true
       name: "moxied"
       image: "paultag/moxie:latest"
       privileged: true

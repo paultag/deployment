@@ -13,7 +13,7 @@
 
  - name: upgrade {{name}}
    script: "{{name}}/files/upgrade.sh"
-   when: upgrade == True
+   when: upgrade
 
  - name: reload specs
    command: systemctl daemon-reload
