@@ -1,0 +1,25 @@
+#!/bin/bash
+
+{% if environment_file %}
+source /etc/docker/{{environment_file}}.sh
+{% endif %}
+
+
+/usr/bin/docker run -it --rm -it \
+{% if privileged %}
+        --privileged=true \
+{% endif %}
+{% for port in ports %}
+        -p {{port}} \
+{% endfor %}
+{% for key, value in env.iteritems() %}
+        -e {{key}}={{value}} \
+{% endfor %}
+{% for host, container in volumes.iteritems() %}
+{% if host.startswith("/") %}
+        -v {{host}}:{{container}} \
+{% else %}
+        -v /srv/docker/{{name}}/{{host}}:{{container}} \
+{% endif %}
+{% endfor %}
+        {{image}} $@

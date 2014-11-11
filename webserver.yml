@@ -16,9 +16,10 @@
        vhosts: 
          - "lolkml.org"
      - role: website
-       name: acetarium
+       name: cuttleumbia
        default: false
-       repo: "git://github.com/paultag/acetarium.com.git"
+       repo: "git://github.com/paultag/cuttleumbia.house.git"
        vhosts:
-         - "acetarium.com"
-         - "www.acetarium.com"
+         - "cuttleumbia.house"
+         - "district.of.cuttleumbia.house"
+         - "www.district.of.cuttleumbia.house"

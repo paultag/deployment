@@ -3,6 +3,9 @@
    template: src=systemd.j2 dest=/etc/systemd/system/{{name}}.service owner=root group=root mode=0644
    notify: reload specs
 
+ - name: Write out entrypoint
+   template: src=entry.j2 dest=/usr/local/bin/{{name}} owner=root group=root mode=0755
+
  - name: 'Add in a {{name}} config directory.'
    file: path=/srv/docker/{{name}}/ state=directory
 
