@@ -1,0 +1,11 @@
+---
+- name: KGB
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: daemon
+      name: "kgb"
+      image: "paultag/kgb:latest"
+      command: "kgb-bot --foreground --config /kgb/core.conf"
+      ports: ["0.0.0.0:8080:8080/tcp"]
+      volumes: {"kgb": "/kgb/"}
