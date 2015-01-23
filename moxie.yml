@@ -11,7 +11,7 @@
         - "moxie.pault.ag"
         - "moxie.lucifer.pault.ag"
     - role: daemon
-      ports: ["0.0.0.0:1337:1337/tcp"]
+      ports: ["0.0.0.0:2222:2222/tcp"]
       name: "moxie"
       image: "paultag/moxie:latest"
       privileged: true
