@@ -11,3 +11,4 @@ privileged: false
 terminal: false
 environment_file: false
 upgrade: false
+websocket: false

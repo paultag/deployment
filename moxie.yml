@@ -15,6 +15,7 @@
       name: "moxie"
       image: "paultag/moxie:latest"
       privileged: true
+      websocket: true
       environment_file: "moxie"
       command: "moxied"
       env: {
