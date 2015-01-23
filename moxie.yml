@@ -21,7 +21,8 @@
       env: {
         "DATABASE_URL": "${DATABASE_URL}",
         "MOXIE_SOCKET": "${MOXIE_SOCKET}",
-        "MOXIE_SLACKBOT_KEY": "${MOXIE_SLACKBOT_KEY}"
+        "MOXIE_SLACKBOT_KEY": "${MOXIE_SLACKBOT_KEY}",
+        "MOXIE_WEB_URL": "${MOXIE_WEB_URL}"
       }
       volumes: {
           "/run/docker.sock": "/run/docker.sock",
