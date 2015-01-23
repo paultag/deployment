@@ -15,22 +15,23 @@
       image: "paultag/moxie:latest"
       privileged: true
       environment_file: "moxie"
-      command: "moxie-serve"
+      command: "moxied"
       env: {
         "DATABASE_URL": "${DATABASE_URL}",
-        "MOXIE_SOCKET": "${MOXIE_SOCKET}"
+        "MOXIE_SOCKET": "${MOXIE_SOCKET}",
+        "MOXIE_SLACKBOT_KEY": "${MOXIE_SLACKBOT_KEY}"
       }
       volumes: {
           "/run/docker.sock": "/run/docker.sock",
           "moxie": "/moxie/",
           "/srv/docker/nginx/serve/sockets/": "/sockets/"
       }
-    - role: daemon
-      upgrade: true
-      name: "moxied"
-      image: "paultag/moxie:latest"
-      privileged: true
-      environment_file: "moxie"
-      command: "moxied"
-      env: {"DATABASE_URL": "${DATABASE_URL}"}
-      volumes: {"/run/docker.sock": "/run/docker.sock"}
+    # - role: daemon
+    #   upgrade: true
+    #   name: "moxied"
+    #   image: "paultag/moxie:latest"
+    #   privileged: true
+    #   environment_file: "moxie"
+    #   command: "moxied"
+    #   env: {"DATABASE_URL": "${DATABASE_URL}"}
+    #   volumes: {"/run/docker.sock": "/run/docker.sock"}
