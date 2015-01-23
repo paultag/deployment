@@ -7,6 +7,7 @@
       name: "moxie"
       default: false
       upgrade: true
+      websocket: true
       vhosts:
         - "moxie.pault.ag"
         - "moxie.lucifer.pault.ag"
@@ -15,7 +16,6 @@
       name: "moxie"
       image: "paultag/moxie:latest"
       privileged: true
-      websocket: true
       environment_file: "moxie"
       command: "moxied"
       env: {
