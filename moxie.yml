@@ -11,6 +11,7 @@
       vhosts:
         - "moxie.pault.ag"
         - "moxie.lucifer.pault.ag"
+        - "moxie.sunlightlabs.com"
     - role: daemon
       ports: ["0.0.0.0:2222:2222/tcp"]
       name: "moxie"
