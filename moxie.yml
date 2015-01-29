@@ -1,6 +1,6 @@
 ---
 - name: Install moxie
-  hosts: lucifer
+  hosts: moxie
   sudo: true
   roles:
     - role: webservice
