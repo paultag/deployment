@@ -1,6 +1,6 @@
 ---
 - name: Install PostgreSQL
-  hosts: lucifer
+  hosts: database
   sudo: true
   roles:
     - role: daemon

@@ -1,6 +1,6 @@
 ---
 - name: Install nginx
-  hosts: lucifer
+  hosts: machines
   sudo: true
   roles:
     - role: daemon
