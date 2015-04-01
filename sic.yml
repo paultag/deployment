@@ -1,0 +1,23 @@
+---
+- name: Install travel
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: django
+      name: "sic.pault.ag"
+      default: false
+      vhosts:
+        - "sic.pault.ag"
+    - role: daemon
+      name: "sic.pault.ag"
+      image: "paultag/sic:latest"
+      environment_file: "sic.pault.ag"
+      upgrade: true
+      env: {
+        "SECRET_KEY": "${SECRET_KEY}",
+        "DJANGO_DEBUG": "${DJANGO_DEBUG}",
+        "DJANGO_DATABASE_URL": "${DJANGO_DATABASE_URL}",
+      }
+      volumes: {
+          "/srv/docker/nginx/serve/sockets/": "/sockets/"
+      }
