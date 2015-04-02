@@ -22,7 +22,7 @@ function alembic  {
 
 alembic upgrade head
 
-for config in $(moxie ls ${MOXIE_ROOT}); do
-    echo "Loading: ${config}"
-    moxie moxie-load ${MOXIE_ROOT}/${config}
-done
+# for config in $(moxie ls ${MOXIE_ROOT}); do
+#     echo "Loading: ${config}"
+#     moxie moxie-load ${MOXIE_ROOT}/${config}
+# done
