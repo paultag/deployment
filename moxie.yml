@@ -15,6 +15,7 @@
     - role: daemon
       ports: ["0.0.0.0:2222:2222/tcp"]
       name: "moxie"
+      upgrade: true
       image: "paultag/moxie:latest"
       privileged: true
       environment_file: "moxie"
