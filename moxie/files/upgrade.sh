@@ -16,7 +16,7 @@ function moxie  {
 
 
 function alembic  {
-    moxie alembic "$@"
+    moxie "cd /opt/pault.ag/moxie/ && alembic \"$@\""
 }
 
 
