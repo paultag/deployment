@@ -4,6 +4,13 @@
    sudo: true
    roles:
      - role: website
+       name: paultag
+       default: false
+       repo: "git://github.com/paultag/pault.ag.git"
+       vhosts:
+         - "pault.ag"
+         - "www.pault.ag"
+     - role: website
        name: catchall
        default: true
        repo: "git://github.com/paultag/catchall.pault.ag.git"

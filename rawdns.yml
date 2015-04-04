@@ -1,6 +1,6 @@
 ---
 - name: Install rawdns
-  hosts: lucifer
+  hosts: machines
   sudo: true
   roles:
     - role: daemon

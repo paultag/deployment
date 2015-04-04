@@ -9,9 +9,6 @@ source /etc/docker/{{environment_file}}.sh
 {% if privileged %}
         --privileged=true \
 {% endif %}
-{% for port in ports %}
-        -p {{port}} \
-{% endfor %}
 {% for key, value in env.iteritems() %}
         -e {{key}}={{value}} \
 {% endfor %}
