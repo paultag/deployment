@@ -1,0 +1,18 @@
+---
+- name: Install checkin
+  hosts: lucifer
+  sudo: true
+  roles:
+    - role: webservice
+      name: "checkin"
+      default: false
+      vhosts:
+        - "checkin.pault.ag"
+    - role: daemon
+      name: "checkin"
+      image: "paultag/checkin:latest"
+      privileged: false
+      volumes: {
+          "checkin": "/checkin/",
+          "/srv/docker/nginx/serve/sockets/": "/sockets/"
+      }
