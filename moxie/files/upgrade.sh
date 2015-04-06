@@ -2,6 +2,7 @@
 
 IMAGE="paultag/moxie:latest"
 MOXIE_ROOT="/moxie/"
+WORKDIR="/opt/pault.ag/moxie/"
 
 source /etc/docker/moxie.sh
 
@@ -11,12 +12,13 @@ function moxie  {
         -e DATABASE_URL=${DATABASE_URL} \
         -e SECRET_KEY=${SECRET_KEY} \
         -v /srv/docker/moxie/moxie/:/moxie/ \
+        -w ${WORKDIR} \
         ${IMAGE} "$@"
 }
 
 
 function alembic  {
-    moxie "cd /opt/pault.ag/moxie/ && alembic \"$@\""
+    moxie alembic $@
 }
 
 
